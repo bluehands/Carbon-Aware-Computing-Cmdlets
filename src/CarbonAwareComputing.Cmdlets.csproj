@@ -39,7 +39,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Update="CarbonAwareComputing.Cmdlets.psd1">
+		<None Update="CarbonAwareComputing.psd1">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 	</ItemGroup>
