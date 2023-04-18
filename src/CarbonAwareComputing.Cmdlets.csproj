@@ -16,7 +16,7 @@
 		<PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.1" />
 		<PackageReference Include="PowerShellStandard.Library" Version="5.1.1" />
-		<PackageReference Include="CarbonAwareComputing.ExecutionForecast" Version="1.0.5" />
+		<PackageReference Include="CarbonAwareComputing.ExecutionForecast" Version="1.1.0" />
 		<PackageReference Include="FunicularSwitch" Version="4.0.0" />
 	</ItemGroup>
 

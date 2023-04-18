@@ -3,7 +3,7 @@
     "PwshClient": {
       "commandName": "Executable",
       "executablePath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
-      "commandLineArgs": "-NoLogo -NoExit -Command \"Import-Module '.\\CarbonAwareComputing.Cmdlets.psd1'\""
+      "commandLineArgs": "-NoLogo -NoExit -Command \"Import-Module '.\\CarbonAwareComputing.psd1'\""
     },
     "Docker": {
       "commandName": "Docker"
