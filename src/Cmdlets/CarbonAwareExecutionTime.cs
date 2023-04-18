@@ -43,7 +43,7 @@ public class CarbonAwareExecutionTime : CmdletBase
     private string ConvertFromSecureString(SecureString secureString)
     {
         var c = new NetworkCredential(string.Empty, secureString);
-        return c.ToString();
+        return c.Password;
     }
 }
 
