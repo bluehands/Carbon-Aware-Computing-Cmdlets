@@ -7,7 +7,7 @@
 RootModule = 'CarbonAwareComputing.Cmdlets.dll'
 
 # Version number of this module.
-ModuleVersion = '1.1.0'
+ModuleVersion = '1.2.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()

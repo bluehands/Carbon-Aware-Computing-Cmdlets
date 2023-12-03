@@ -4,7 +4,7 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<AssemblyName>CarbonAwareComputing.Cmdlets</AssemblyName>
 		<RootNamespace>CarbonAwareComputing.Cmdlets</RootNamespace>
-		<Version>1.1.0</Version>
+		<Version>1.2.0</Version>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 		<GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
@@ -16,8 +16,8 @@
 		<PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.1" />
 		<PackageReference Include="PowerShellStandard.Library" Version="5.1.1" />
-		<PackageReference Include="CarbonAwareComputing.ExecutionForecast" Version="1.1.0" />
-		<PackageReference Include="FunicularSwitch" Version="4.0.0" />
+		<PackageReference Include="CarbonAwareComputing.ExecutionForecast" Version="1.1.3" />
+		<PackageReference Include="FunicularSwitch" Version="5.0.1" />
 	</ItemGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
