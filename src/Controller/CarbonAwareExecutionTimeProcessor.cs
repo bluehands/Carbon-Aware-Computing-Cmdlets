@@ -1,42 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Security;
 using System.Threading;
 using System.Threading.Tasks;
-using CarbonAwareComputing.Cmdlets.Cmdlets;
-using CarbonAwareComputing.ExecutionForecast;
+using CarbonAwareComputing.Cmdlets;
+using CarbonAwareComputing;
 using FunicularSwitch;
-using static CarbonAwareComputing.ExecutionForecast.ExecutionTime;
 
 namespace CarbonAwareComputing.Cmdlets.Controller;
 
-public class CarbonAwareExecutionTimeProcessor
+public class CarbonAwareExecutionTimeProcessor : CarbonAwareProcessor
 {
-    private static readonly CarbonAwareDataProviderOpenData s_CarbonAwareDataProvider = new();
-    private static readonly Dictionary<WattTimeCredentials, CarbonAwareDataProviderWattTime> s_CarbonAwareDataProviderWattTime = new();
-    private readonly DataProvider m_DataProvider = DataProvider.OpenData;
-    private readonly CarbonAwareDataProviderWattTime m_CarbonAwareDataProviderWattTime;
-
-    public CarbonAwareExecutionTimeProcessor()
+    public CarbonAwareExecutionTimeProcessor() : base()
     {
 
     }
 
-    public CarbonAwareExecutionTimeProcessor(WattTimeCredentials credentials)
+    public CarbonAwareExecutionTimeProcessor(WattTimeCredentials credentials) : base(credentials)
     {
-        m_DataProvider = DataProvider.WattTime;
-        if (!s_CarbonAwareDataProviderWattTime.TryGetValue(credentials, out m_CarbonAwareDataProviderWattTime))
-        {
-            m_CarbonAwareDataProviderWattTime = new CarbonAwareDataProviderWattTime(credentials.UserName, credentials.Password);
-            s_CarbonAwareDataProviderWattTime[credentials] = m_CarbonAwareDataProviderWattTime;
-        }
     }
 
     public async Task<Result<DateTimeOffset>> Process(string location, DateTimeOffset earliestExecutionTime, DateTimeOffset latestExecutionTime, TimeSpan estimatedExecutionDuration, DateTimeOffset fallbackExecutionTime)
     {
         try
         {
-            CarbonAwareDataProvider provider = m_DataProvider == DataProvider.OpenData ? s_CarbonAwareDataProvider : m_CarbonAwareDataProviderWattTime;
+            CarbonAwareDataProvider provider = DataProvider == DataProvider.OpenData ? CarbonAwareDataProvider : m_CarbonAwareDataProviderWattTime;
             var forecast = await provider.CalculateBestExecutionTime(new ComputingLocation(location), earliestExecutionTime, latestExecutionTime, estimatedExecutionDuration);
             return forecast.Match(
                 _ => fallbackExecutionTime,
@@ -49,5 +36,30 @@ public class CarbonAwareExecutionTimeProcessor
         }
     }
 }
+public class GridCarbonIntensityProcessor : CarbonAwareProcessor
+{
+    public GridCarbonIntensityProcessor() : base()
+    {
 
-public record WattTimeCredentials(string UserName, string Password);
+    }
+
+    public GridCarbonIntensityProcessor(WattTimeCredentials credentials) : base(credentials)
+    {
+    }
+
+    public async Task<GridCarbonIntensity> Process(string location)
+    {
+        try
+        {
+            CarbonAwareDataProvider provider = DataProvider == DataProvider.OpenData ? CarbonAwareDataProvider : m_CarbonAwareDataProviderWattTime;
+            return await provider.GetCarbonIntensity(new ComputingLocation(location), DateTimeOffset.Now);
+            
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            return GridCarbonIntensity.NoData();
+        }
+    }
+}
+

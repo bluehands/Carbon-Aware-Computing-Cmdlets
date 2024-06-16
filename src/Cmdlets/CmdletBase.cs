@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Management.Automation;
 
-namespace CarbonAwareComputing.Cmdlets.Cmdlets
+namespace CarbonAwareComputing.Cmdlets
 {
     public class CmdletBase : PSCmdlet
     {

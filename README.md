@@ -2,11 +2,12 @@
 
 ## Overview
 
-A PowerShell Cmdlet to get the best execution time for a tasks with **carbon awareness** in mind. The best point in time is calculated based on emission forecasts to get a window with a minimal grid carbon intensity.
+A set of PowerShell Cmdlet for **carbon awareness** in mind. Get the best execution time for a tasks with minimal grid carbon intenity. The best point in time is calculated based on emission forecasts to get a window with a minimal grid carbon intensity. 
+Additinaly get the actual grid carbon intensity.
 
 ## Installation
 
-CarbonAwareComputing.Cmdlets is available via PowerShell Gallery. 
+CarbonAwareComputing.Cmdlets is available via PowerShell Gallery.
 
 ``` powershell
 Install-Module -Name CarbonAwareComputing
@@ -19,6 +20,11 @@ Use the *Get-CarbonAwareExecutionTime* to get a forecast for the best execution 
 ``` powershell
 $now = get-date
 Get-CarbonAwareExecutionTime -Location de -EarliestExecutionTime $now -LatestExecutionTime ($now).AddHours(10) -EstimatedExecutionDuration "00:10:00" 
+```
+Use the *Get-GridCarbonIntensity* to get the actual grid carbon intensity.
+
+``` powershell
+get-GridCarbonIntensity -Location "fr" -Provider OpenData 
 ```
 
 ## Methodology

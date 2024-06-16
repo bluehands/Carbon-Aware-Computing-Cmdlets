@@ -22,10 +22,10 @@ Author = 'Implemented with 💙 by bluehands'
 CompanyName = 'bluehands GmbH &amp; Co.mmunication KG'
 
 # Copyright statement for this module
-Copyright = '(c) 2023 bluehands. All rights reserved.'
+Copyright = '(c) 2024 bluehands. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'A Powershell Cmdlet to get the best execution time for a tasks with carbon awareness in mind. The best point in time is calculated based on emission forecasts to get a window with a minimal grid carbon intensity.'
+Description = 'A Powershell Cmdlet for carbon aware computing. Get the best execution time for a tasks with carbon awareness in mind. The best point in time is calculated based on emission forecasts to get a window with a minimal grid carbon intensity. Additionaly get the actual grid carbon intensity'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '7.0'
@@ -68,7 +68,8 @@ FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @(
-    'Get-CarbonAwareExecutionTime'
+    'Get-CarbonAwareExecutionTime',
+    'Get-GridCarbonIntensity'
     )
 
 # Variables to export from this module
